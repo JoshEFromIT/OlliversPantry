@@ -1,0 +1,125 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars from appearing if not needed */
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Use the full viewport height */
+}
+
+.responsive-image {
+    z-index: 1;
+    width: 40%; /* Scale the image to be a quarter of its parent's width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the image is fully visible */
+}
+
+.responsive-image {
+    z-index: 1;
+    width: 30%; /* Adjusted via media query for smaller screens */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the image is fully visible */
+}
+
+.cat-image {
+    transition: transform 0.1s ease; /* Smooth transition for the click effect */
+    cursor: pointer; /* Indicates it's clickable */
+}
+
+    .cat-image:hover {
+        transform: scale(1.1); /* Adjusted via media query if needed */
+    }
+
+.header-title {
+    position: absolute;
+    top: 15%; /* Adjust this value to position the title as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif; /* A fun font choice */
+    color: #ffffff; /* Choose a color that stands out against your background */
+    font-size: 9vw; /* Responsive font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+    z-index: 2; /* Ensure the header is above the image */
+    white-space: nowrap; /* Prevents the text from wrapping */
+}
+
+.image-background img {
+    display: block; /* This removes any extra space below the image */
+}
+
+.image-background {
+    background-color: #f0f0f0; /* Your desired background color */
+    display: inline-block;
+    padding: 10px; /* Or any other size */
+    border-radius: 5px; /* Optional, if you want rounded corners */
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;
+    background: lightblue;
+    position: relative;
+    overflow: hidden;
+    display: flex; /* This ensures that the container can use flexbox properties */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    background-size: 100% 30px;
+}
+
+    .container::before {
+        z-index: 0;
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, #3498db 10%, transparent 20%), radial-gradient(circle, transparent 10%, #3498db 20%);
+        background-size: 30px 30px; /* Adjust the size of the pattern */
+        animation: moveBackground 8s linear infinite; /* Adjust the animation duration and timing function */
+    }
+
+
+
+
+@keyframes moveBackground {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(20%, 20%);
+    }
+}
+
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .responsive-image {
+        width: 60%; /* Larger percentage for smaller screens */
+    }
+
+    /* Optionally adjust .cat-image transformations for mobile */
+    .cat-image.clicked {
+        transform: scale(1.5); /* Less dramatic scaling on small screens */
+    }
+
+    .cat-image:hover {
+        transform: scale(1.05); /* Subtle hover effect for smaller screens */
+    }
+
+    .cta-button {
+        font-size: 1rem; /* Smaller font size on smaller screens */
+        padding: 8px 15px; /* Adjust the padding */
+    }
+
+}
